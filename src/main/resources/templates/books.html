@@ -9,10 +9,10 @@
 <body>
 	<div class="container py-4">
 		<header class="pb-3 mb-4 border-bottom">
-			<a href="welcome.html"
+			<a href="/bookmarket/home"
 				class="d-flex align-items-center text-body-emphasis text-decoration-none">
 
-				<!-- svg 입력하기  -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-book-half me-2" viewBox="0 0 16 16"></svg>
 				
 				<span class="fs-4">BookMarket</span>
 			</a>
@@ -27,15 +27,15 @@
 			<div class = "col-md-4" th:each = "book:${bookList}">
 				<h3 th:text ="${book.name}"></h3>
 				<p th:text = "${book.author}"></p>
-				<p th:text = "${book.publisher} + '|' + ${book.releaseDate}"></p>
+				<p th:text = "${book.publisher + '|' + book.releaseDate}"></p>
 				<p align = "left" th:text = "${book.description}"></p>
-				<p th:text = "${book.unitPrice}">원
+				<p th:text = "${book.unitPrice}"></p>원
 			
 			</div>
 			
 		</div>
 		<footer class = "pt-3 mt-4 text-body-secondary border-top">
-			<span class = "text-body-secondary">$copy; BookMarket</span>
+			<span class = "text-body-secondary">&copy; BookMarket</span>
 		</footer>
 	</div>
 </body>
