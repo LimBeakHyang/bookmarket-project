@@ -6,4 +6,6 @@ import com.springboot.domain.Book;
 
 public interface BookRepository {
 	List<Book> getAllBookList();
+	Book getBookById(String bookId);
+	List<Book> getBookListByCategory(String category);
 }
