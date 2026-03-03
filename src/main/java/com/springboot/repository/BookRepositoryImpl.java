@@ -115,5 +115,9 @@ public class BookRepositoryImpl implements BookRepository {
 			booksByCategory.retainAll(booksByPublisher);
 			return booksByCategory;
 		}
+	
+	public void setNewBook(Book book) {
+		listOfBooks.add(book);
+	}
 	}
 

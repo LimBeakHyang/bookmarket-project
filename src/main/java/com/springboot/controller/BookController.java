@@ -7,9 +7,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,6 +67,29 @@ public class BookController {
         Set<Book> booksByFilter = bookService.getBookListByFilter(bookFilter);
         model.addAttribute("bookList", booksByFilter);
         return "books";
+	}
+	
+	@GetMapping("/add")
+	public String requestAddBookForm() {
+		return "addBook";
+	}
+	
+	@PostMapping("/add")
+	public String submitAddNewBook(@ModelAttribute Book book) {
+		bookService.setNewBook(book);
+		return "redirect:/books";
+	}
+	
+	@ModelAttribute
+	public void addAttributes(Model model) {
+		model.addAttribute("addTitle", "신규 도서 등록");
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setAllowedFields("bookId", "name", "unitPrice", "author", 
+				"description", "publisher", "category", "unitsInStock", 
+				"totalPages", "releaseDate", "condition");
 	}
 	
 }
