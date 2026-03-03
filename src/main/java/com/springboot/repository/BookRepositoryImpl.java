@@ -90,19 +90,21 @@ public class BookRepositoryImpl implements BookRepository {
 	}
 
 	public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
-		Set<Book> booksByPublisher = new HashSet<Book>();
-		Set<Book> booksByCategory = new HashSet<Book>();
-		Set<String> booksByFilter = filter.keySet();
-		if (booksByFilter.contains("publisher")) {
-			for (int j = 0; j < filter.get("publisher").size(); j++) {
-				String pubisherName = filter.get("publisher").get(j);
-				for (int i = 0; i < listOfBooks.size(); i++) {
-					Book book = listOfBooks.get(i);
-					if (pubisherName.equalsIgnoreCase(book.getPublisher())) {
-						booksByPublisher.add(book);
+	    Set<Book> booksByPublisher = new HashSet<Book>();
+	    Set<Book> booksByCategory = new HashSet<Book>();
+	    Set<String> booksByFilter = filter.keySet();
+	    
+	    if (booksByFilter.contains("publisher")) {
+	        for (int j = 0; j < filter.get("publisher").size(); j++) {
+	            String publisherName = filter.get("publisher").get(j);
+	            for (int i = 0; i < listOfBooks.size(); i++) {
+	                Book book = listOfBooks.get(i);
+	                if (publisherName.equalsIgnoreCase(book.getPublisher())) {
+	                    booksByPublisher.add(book);
 					}
 				}
 			}
+	    }
 			if (booksByFilter.contains("category")) {
 				for (int i = 0; i < filter.get("category").size(); i++) {
 					String category = filter.get("category").get(i);
@@ -114,4 +116,4 @@ public class BookRepositoryImpl implements BookRepository {
 			return booksByCategory;
 		}
 	}
-}
+
