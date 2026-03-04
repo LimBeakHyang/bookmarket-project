@@ -83,6 +83,7 @@ public class BookController {
 	@PostMapping("/add")
 	public String submitAddNewBook(@ModelAttribute Book book) {
 		System.out.println(book);
+		System.out.println("File Directory: " + fileDir);
 		MultipartFile bookImage = book.getBookImage();
 		String saveName = bookImage.getOriginalFilename();
 		File saveFile = new File(fileDir, saveName);
