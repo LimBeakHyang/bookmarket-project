@@ -2,6 +2,8 @@ package com.springboot.domain;
 
 import java.math.BigDecimal;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Book {
 	private String bookId; // 도서 ID
 	private String name; // 도서 제목
@@ -10,9 +12,19 @@ public class Book {
 	private String description; // 설명
 	private String publisher; // 출판사
 	private String category; // 분류
-	private long unitsInStock; // 재고수
+	private Long unitsInStock; // 재고수
 	private String releaseDate; // 출판일(월/년)
 	private String condition; // 신규도서 or 중고도서 or 전자책
+	private String fileName; // 도서 이미지 파일
+	private MultipartFile bookImage; // 도서 이미지
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
 	public Book() {
 		super();
@@ -98,5 +110,27 @@ public class Book {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
+	
+	
+
+	public MultipartFile getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(MultipartFile bookImage) {
+		this.bookImage = bookImage;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", name=" + name + ", unitPrice=" + unitPrice + ", author=" + author
+				+ ", description=" + description + ", publisher=" + publisher + ", category=" + category
+				+ ", unitsInStock=" + unitsInStock + ", releaseDate=" + releaseDate + ", condition=" + condition
+				+ ", fileName=" + fileName + ", bookImage=" + bookImage + "]";
+	}
+
+	
+	
+	
 
 }

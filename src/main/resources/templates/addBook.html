@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>도서 등록</title>
-    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bookmarket/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container py-4">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row align-items-md-stretch">
-            <form action="/bookmarket/books/add" method="post">
+            <form action="/bookmarket/books/add" method="post" enctype="multipart/form-data">
                 <legend>[[${addTitle}]]</legend>
                 <div class="mb-3 row">
                     <label class="col-sm-2 control-label">도서ID</label>
@@ -84,6 +84,13 @@
                         <input type="radio" name="condition" value="E-Book"/> E-Book
                     </div>
                 </div>
+                <div class="mb-3 row">
+                	<label class="col-sm-2 control-label">도서이미지</label>
+                	<div class="col-sm-7">
+                		<input type="file" name="bookImage" class="form-control"/>
+                	</div>
+                </div>
+                
                 <div class="mb-3 row">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit" class="btn btn-primary" value="등록"/>
